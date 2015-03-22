@@ -18,36 +18,27 @@ You should create one R script called run_analysis.R that does the following.
 - 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 #Files
-
 - Data files in directory: UCI HAR Dataset -directory
-
 - README.md, this file
-
 - run_analysis.R , R-program producing requested output
-
 - CodeBook.md , description of data and transformations done
-
-- tidy1.txt , processed tidy data from step 4 
-
-- tidy2.txt , aggregated tidy data from step 5
-
+- sensor_avg_by_activity.txt , aggregated tidy data from step 5
 
 
 #Running the program
-
 Download the dataset and extract into a folder in your working directory named "UCI HAR Dataset"
-
 Download run_analysis.R and load into R Studio
 
 #What the script does
+The script is commented throughout, but here is a summary:
 
-In the first step run_analysis.R uses cbind and rbind to merge the training and test data sets. 
+In the first step run_analysis.R uses cbind and rbind to merge the training and test data sets and label the colum names based on the features file. 
 
-The second step imports readable column names from the features file. Columns that have mean or std in them are selected as the maindataset from this point forward.
+The second step extracts the values on the mean and standard deviation for each measurement.
 
-Third step loads activity data and activity label data. Test and training activity data is merged into own dataset. Left join is used to combine activity dataset with labels. This activity data is then merged as new columns into main dataset. There is no additional renaming of columns, as they are sufficiently well named.
+The third step loads activity data and activity label data. Test and training activity data is merged into own dataset. Join is used to combine activity dataset with labels. This activity data is then merged as new columns into main dataset. 
 
-Fourth step loads subject information and adds that to the main dataset with the same procedure - combining test and training data, and then adding it as a new column. First output file gets written out from this dataset. Second dataset gets aggregated by using reshape-module and melt - cast -- method. In the aggregate subject and activity are used as identity columns. 
+The fourth step labels the data set with descriptive names.
 
-Fifth step is profit. 
+The fifth step is creating the tidy dataset. 
 
